@@ -1,12 +1,45 @@
 'use strict';
 
-let money = prompt('Ваш месячный доход?'); 
+let money;
+let expenses1;
+let expenses2;
+let amount1;
+let amount2;
+
+do {
+  money = prompt('Ваш месячный доход?');
+}
+  while(isNaN(parseFloat(money)));
+
+
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 let deposit = confirm('Есть ли у вас депозит в банке?');
-let expenses1 = prompt('Введите обязательную статью расходов?');
-let amount1 = prompt('Во сколько это обойдется?');
-let expenses2 = prompt('Введите обязательную статью расходов?');
-let amount2 = prompt('Во сколько это обойдется?');
+
+
+let getExpensesMonth = function() {
+  let sum = 0;
+
+  for(let i = 0; i < 2; i++) {
+
+    if (i===0) {
+      expenses1 = prompt('Введите обязательную статью расходов?');
+      
+    } else if (i === 1) {
+      expenses2 = prompt('Введите обязательную статью расходов?');
+    }
+    
+    do {
+      sum = +prompt('Во сколько это обойдется?');
+    }
+      while(isNaN(sum) || sum.trim() === '' || sum === null);
+  } 
+
+  console.log(sum);
+  return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+
 
 
 let showTypeOf = function(data){
@@ -15,20 +48,16 @@ let showTypeOf = function(data){
 showTypeOf(money);
 showTypeOf(deposit);
 
-const getExpensesMonth = function (a, b){
-  return a + b;
-};
-console.log(getExpensesMonth(+amount1, +amount2));
 
-console.log(expenses1);
-console.log(expenses2);
+
+console.log(expensesAmount);
 
 const getAccumulatedMonth = function (a, b){
   return a - b;
 };
-getAccumulatedMonth(+money, getExpensesMonth(+amount1, +amount2));
+getAccumulatedMonth(+money, expensesAmount());
 
-let accumulatedMonth = getAccumulatedMonth(+money, getExpensesMonth(+amount1, +amount2));
+let accumulatedMonth = getAccumulatedMonth(+money, expensesAmount());
 
 let budgetDay = Math.floor(accumulatedMonth / 30);
 console.log(budgetDay);
