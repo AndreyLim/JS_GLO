@@ -29,7 +29,7 @@ let getExpensesMonth = function() {
     }
     
     do {
-      sum = +prompt('Во сколько это обойдется?');
+      sum = prompt('Во сколько это обойдется?');
     }
       while(isNaN(sum) || sum.trim() === '' || sum === null);
   } 
@@ -55,9 +55,10 @@ console.log(expensesAmount);
 const getAccumulatedMonth = function (a, b){
   return a - b;
 };
-getAccumulatedMonth(+money, expensesAmount());
 
-let accumulatedMonth = getAccumulatedMonth(+money, expensesAmount());
+getAccumulatedMonth(+money, expensesAmount);
+
+let accumulatedMonth = getAccumulatedMonth(+money, expensesAmount);
 
 let budgetDay = Math.floor(accumulatedMonth / 30);
 console.log(budgetDay);
@@ -75,6 +76,13 @@ if (budgetDay > 1200) {
 };
 
 const getTargetMonth = function(a, b){
+
+  if (getTargetMonth < 0) {
+  console.log('Цель не будет достигнута');
+  } else {
+    console.log('Цель будет достигнута');
+  }
+
 return a / b;
 };
 console.log(getTargetMonth(300000, accumulatedMonth));
