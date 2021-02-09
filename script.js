@@ -1,8 +1,7 @@
 'use strict';
 
 let money;
-let expenses1;
-let expenses2;
+let expenses;
 let amount1;
 let amount2;
 
@@ -21,19 +20,15 @@ let getExpensesMonth = function() {
 
   for(let i = 0; i < 2; i++) {
 
-    if (i===0) {
-      expenses1 = prompt('Введите обязательную статью расходов?');
-      
-    } else if (i === 1) {
-      expenses2 = prompt('Введите обязательную статью расходов?');
-    }
-    
-    do {
-      sum = prompt('Во сколько это обойдется?');
-    }
-      while(isNaN(sum) || sum.trim() === '' || sum === null);
+    if (i < 2) {
+      expenses = prompt('Введите обязательную статью расходов?');
+      do {
+        sum = prompt('Во сколько это обойдется?');
+      }
+      while (isNaN(sum) || sum.trim() === '' || sum === null);
+    }  
   } 
-
+  
   console.log(sum);
   return sum;
 };
