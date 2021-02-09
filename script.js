@@ -17,6 +17,8 @@ let appData = {
   expenses: {},
   addExpenses: [],
   deposit: false,
+  persentDeposit: 0,
+  moneyDeposit: 0,
   mission: 100000,
   period: 0,
   budget: money,
@@ -24,12 +26,30 @@ let appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   asking: function(){
+
+    if (confirm('Есть ли у вас дополнительный источник заработка?')){
+        let itemIncome
+        do {
+          itemIncome = prompt('Какой у вас дополнительный заработок?');
+        } while (!isNaN(itemIncome) || itemIncome === null);
+        let cashIncome
+        do {
+          cashIncome = prompt('Сколько в мес яц вы на этом зарабатываете?');
+        } while (isNaN(cashIncome) || cashIncome === '' || cashIncome === null);
+
+        appData.income[itemIncome] = cashIncome;
+    }
+
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Интерент, Кварплата');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 0; i < 2; i++) {
-        let itemExpenses = prompt('Введите обязательную статью расходов?');
+        let itemExpenses
+        do {
+          itemExpenses = prompt('Введите обязательную статью расходов?');
+        } while (!isNaN(itemExpenses) || itemExpenses === null);
+
         let cashExpenses
         do {
             cashExpenses = +prompt('Во сколько это обойдется?');
@@ -81,10 +101,32 @@ let appData = {
     }
 
     return appData.period;
+    },
+
+  getInfoDeposit: function(){
+    if(appData.deposit){
+      let persentDeposit
+      do {
+        persentDeposit = prompt('Какой годовой процент?');
+      } while (isNaN(persentDeposit) || persentDeposit === '' || persentDeposit === null);
+      appData.persentDeposit = persentDeposit;
+
+      let moneyDeposit;
+      do {
+        moneyDeposit = prompt('Какая сумма заложена?');
+      } while (isNaN(moneyDeposit) || moneyDeposit === '' || moneyDeposit === null);
+      appData.moneyDeposit = moneyDeposit;
     }
+  },
+
+  calcSavedMoney: function(){
+    return appData.budgetMonth * appData.period;
+  }
 };
 
 appData.asking();
+appData.getInfoDeposit();
+appData.calcSavedMoney();
 let expensesMonth = appData.getExpensesMonth();
 let budgetMonth = appData.getBudget();
 
