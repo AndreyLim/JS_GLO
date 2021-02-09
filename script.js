@@ -44,6 +44,7 @@ let appData = {
     for (let key in appData.expenses) {
       sum += +appData.expenses[key];
     }
+    appData.expensesMonth = sum;
     return sum;
   },
 
