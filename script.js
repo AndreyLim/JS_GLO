@@ -27,17 +27,18 @@ let appData = {
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Интерент, Кварплата');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        let expenses1
-        let sum1;
-        expenses1 = prompt('Введите обязательную статью расходов?', 'Интернет');
-        sum1 = +prompt('Во сколько это обойдется?', 500);
-        appData.expenses[expenses1] = sum1;
-        let expenses2;
-        let sum2;
-        expenses2 = prompt('Введите обязательную статью расходов?',  'Кварплата');
-        sum2 = +prompt('Во сколько это обойдется?', 5000);
-        appData.expenses[expenses2] = sum2;
-    },
+
+    for (let i = 0; i < 2; i++) {
+        let itemExpenses = prompt('Введите обязательную статью расходов?');
+        let cashExpenses
+        do {
+            cashExpenses = +prompt('Во сколько это обойдется?');
+        }
+        while (isNaN(cashExpenses) || cashExpenses === '' || cashExpenses === null);
+
+        appData.expenses[itemExpenses] = cashExpenses;
+    }
+  },
 
   getExpensesMonth: function() {
     let sum = 0;
