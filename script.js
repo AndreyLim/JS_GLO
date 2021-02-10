@@ -136,9 +136,7 @@ let getTargetMonth = appData.getTargetMonth();
 console.log(appData);
 console.log('Расходы за месяц: ' + appData.expensesMonth);
 
-appData.addExpenses.map(item => {
- item = item.toString().charAt(0).toUpperCase() + item.slice(1);
-});
+appData.addExpenses = appData.addExpenses.map(item => item.toString().charAt(0).toUpperCase() + item.slice(1));
 console.log(appData.addExpenses);
 
 for (let key in appData) {
