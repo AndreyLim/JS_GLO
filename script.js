@@ -40,7 +40,7 @@ let appData = {
         appData.income[itemIncome] = cashIncome;
     }
 
-    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'интернет, кварплата,кредит');
+    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'интернет,кварплата,кредит');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
@@ -137,7 +137,7 @@ console.log(appData);
 console.log('Расходы за месяц: ' + appData.expensesMonth);
 
 appData.addExpenses = appData.addExpenses.map(item => item.toString().charAt(0).toUpperCase() + item.slice(1));
-console.log(appData.addExpenses);
+console.log(appData.addExpenses.join(', '));
 
 for (let key in appData) {
       console.log('Наша программа включает в себя данные:' + key + appData[key]);
