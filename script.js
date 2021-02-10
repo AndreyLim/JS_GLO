@@ -142,3 +142,63 @@ console.log(appData.addExpenses.join(', '));
 for (let key in appData) {
       console.log('Наша программа включает в себя данные:' + key + appData[key]);
     }
+
+const score = document.getElementById('start');
+console.log(score);
+
+const plusIncome = document.getElementsByTagName('button')[0];
+console.log(plusIncome);
+
+const plusExpenses = document.getElementsByTagName('button')[1];
+console.log(plusExpenses);
+
+const check = document.querySelector('#deposit-check');
+console.log(check);
+
+const placeIncome = document.querySelectorAll('.additional_income-item');
+console.log(placeIncome);
+
+const incomeAmount = document.getElementsByClassName('income-amount');
+console.log(incomeAmount);
+
+const expensesAmount = document.getElementsByClassName('expenses-amount');
+console.log(expensesAmount);
+
+const dayValue = document.getElementsByClassName('budget_day-value');
+console.log(dayValue);
+
+const monthValue = document.getElementsByClassName('expenses_month-value');
+console.log(monthValue);
+
+const incomeValue = document.getElementsByClassName('additional_income-value');
+console.log(incomeValue);
+
+const expensesValue = document.getElementsByClassName('additional_expenses-value');
+console.log(expensesValue);
+
+const periodValue = document.getElementsByClassName('income_period-value');
+console.log(periodValue);
+
+const targetValue = document.getElementsByClassName('target_month-value');
+console.log(targetValue);
+
+const salaryAmount = document.querySelector('.salary-amount');
+console.log(salaryAmount);
+
+const incomeTitle = document.querySelector('.additional_income>[type="text"]');
+console.log(incomeTitle);
+
+const expensesTitle = document.querySelector('.expenses>[type="text"]');
+console.log(expensesTitle);
+
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
+console.log(additionalExpensesItem);
+
+const targetAmount = document.querySelector('.target-amount');
+console.log(targetAmount);
+
+const periodSelect = document.querySelector('.period-select');
+console.log(periodSelect);
+
+const budgetMonthValue = document.querySelector('.budget_month-value');
+console.log(budgetMonthValue);
