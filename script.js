@@ -185,10 +185,12 @@ let appData = {
 
   getStartStop: function(){
       if (salaryAmount.value === '' || salaryAmount.value === null || isNaN(salaryAmount.value)){
-            alert('Введите корректные данные в поле ввода "Месячный доход"!');
-            return false;
+            start.setAttribute("disabled", "true");
       }
+  },
 
+  stopStart: function(){
+    start.removeAttribute("disabled");
   },
 
   calcSavedMoney: function(){
@@ -199,6 +201,8 @@ let appData = {
 start.addEventListener('click', appData.start);
 
 start.addEventListener('click', appData.getStartStop);
+
+salaryAmount.addEventListener('input', appData.stopStart)
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 
