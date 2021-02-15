@@ -183,14 +183,12 @@ let appData = {
     }
   },
 
-  getStartStop: function(){
-      if (salaryAmount.value === '' || salaryAmount.value === null || isNaN(salaryAmount.value)){
-            start.setAttribute("disabled", "true");
-      }
-  },
-
-  stopStart: function(){
-    start.removeAttribute("disabled");
+  getSalaryMonthValue: function(){
+        if (salaryAmount.value === '' || isNaN(salaryAmount.value) || salaryAmount.value === null){
+          start.setAttribute("disabled", "true");
+    } else {
+      start.removeAttribute("disabled");
+    }
   },
 
   calcSavedMoney: function(){
@@ -198,11 +196,11 @@ let appData = {
   }
 };
 
+start.setAttribute("disabled", "true");
+
 start.addEventListener('click', appData.start);
 
-start.addEventListener('click', appData.getStartStop);
-
-salaryAmount.addEventListener('input', appData.stopStart)
+salaryAmount.addEventListener('input', appData.getSalaryMonthValue);
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 
