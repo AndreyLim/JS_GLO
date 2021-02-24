@@ -41,7 +41,7 @@ let appData = {
   expensesMonth: 0,
   start: function () {
   
-      document.querySelectorAll('input[type="text"]').forEach(item => item.disabled);
+      document.querySelectorAll('input[type="text"]').forEach(item => item.disabled = true);
       this.budget = +salaryAmount.value;
 
       this.getExpenses();
@@ -75,8 +75,6 @@ let appData = {
          cloneExpensesItem.querySelectorAll('input').forEach(input => input.value = '');
          expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
 
-         appData.getExpenses();
-
          expensesItems = document.querySelectorAll('.expenses-items');
          if (expensesItems.length === 3){
             expensesPlus.style.display = 'none';
@@ -100,8 +98,6 @@ let appData = {
          let cloneIncomeItem = incomeItems[0].cloneNode(true);
          cloneIncomeItem.querySelectorAll('input').forEach(input => input.value = '');
          incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
-
-         appData.getIncome();
 
          incomeItems = document.querySelectorAll('.income-items');
          if (incomeItems.length === 3){
@@ -142,12 +138,6 @@ let appData = {
                }
          });
    },
-
-  blockAllInput: function(){
-  inputBlock.forEach(function(item) {
-    item.disabled = true;
-  });
-  },
 
   hiddenStart: function() {
     start.style.display = "none";
