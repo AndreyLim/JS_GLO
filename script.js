@@ -25,7 +25,6 @@ let inputBlock = document.querySelectorAll('input[type=text]');
 let cancel = document.querySelector('#cancel');
 
 
-
 let appData = {
   income: {},
   addIncome: [],
@@ -53,7 +52,6 @@ let appData = {
       this.getPeriodAmount();
       this.getInfoDeposit();
       this.calcSavedMoney();
-      this.blockAllInput();
       this.showResult();
       },
 
@@ -142,6 +140,11 @@ let appData = {
   hiddenStart: function() {
     start.style.display = "none";
     cancel.style.display = "block";
+  },
+
+  hiddenCancel: function() {
+    start.style.display = "block";
+    cancel.style.display = "none";
   },
 
 
@@ -236,6 +239,9 @@ let appData = {
     }
   }
     
+  periodSelect.value = '1';
+  periodAmount.textContent = '1';
+
 },
 
 };
@@ -253,3 +259,5 @@ incomePlus.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', appData.getPeriodAmount);
 
 cancel.addEventListener('click', appData.reset);
+
+cancel.addEventListener('click', appData.hiddenCancel);
