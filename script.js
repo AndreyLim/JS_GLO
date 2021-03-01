@@ -216,7 +216,6 @@ let appData = {
   },
 
   reset: function() {
-
   inputBlock.forEach(function(item) {
       item.removeAttribute('disabled');
     });
@@ -238,12 +237,24 @@ let appData = {
       expensesPlus.style.display = 'block';
     }
   }
-    
+
   periodSelect.value = '1';
   periodAmount.textContent = '1';
-
   start.setAttribute("disabled", "disabled");
 
+
+  appData.income = {};
+  appData.addIncome = [];
+  appData.incomeMonth = 0;
+  appData.expenses = {};
+  appData.addExpenses = [];
+  appData.deposit = false;
+  appData.persentDeposit = 0;
+  appData.moneyDeposit = 0;
+  appData.budget = 0;
+  appData.budgetDay = 0;
+  appData.budgetMonth = 0;
+  appData.expensesMonth = 0;
 },
 
 };
