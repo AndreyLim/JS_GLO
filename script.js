@@ -242,6 +242,8 @@ let appData = {
   periodSelect.value = '1';
   periodAmount.textContent = '1';
 
+  start.setAttribute("disabled", "disabled");
+
 },
 
 };
