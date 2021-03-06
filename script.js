@@ -57,7 +57,6 @@ AppData.prototype.start = function () {
 };
 
 AppData.prototype.showResult = function(){
-  appData.bind(appData);
    budgetMonthValue.value = this.budgetMonth;
    budgetDayValue.value = this.budgetDay;
    expensesMonthValue.value = this.expensesMonth;
@@ -254,15 +253,15 @@ AppData.prototype.reset = function() {
 
 
 AppData.prototype.eventsListeners = function() {
-let _this = this;
-start.addEventListener('click', _this.hiddenStart);
-start.addEventListener('click', _this.start);
-salaryAmount.addEventListener('input', _this.getSalaryMonthValue);
-expensesPlus.addEventListener('click', _this.addExpensesBlock);
-incomePlus.addEventListener('click', _this.addIncomeBlock);
-periodSelect.addEventListener('input', _this.getPeriodAmount);
-cancel.addEventListener('click', _this.reset);
-cancel.addEventListener('click', _this.hiddenCancel);
+
+start.addEventListener('click', appData.hiddenStart.bind(appData));
+start.addEventListener('click', appData.start.bind(appData));
+salaryAmount.addEventListener('input', appData.getSalaryMonthValue.bind(appData));
+expensesPlus.addEventListener('click', appData.addExpensesBlock.bind(appData));
+incomePlus.addEventListener('click', appData.addIncomeBlock.bind(appData));
+periodSelect.addEventListener('input', appData.getPeriodAmount.bind(appData));
+cancel.addEventListener('click', appData.reset.bind(appData));
+cancel.addEventListener('click', appData.hiddenCancel.bind(appData));
 
 };
 
