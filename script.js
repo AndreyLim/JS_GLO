@@ -63,9 +63,11 @@ AppData.prototype.showResult = function(){
    additionalExpensesValue.value = this.addExpenses.join(', ');
    additionalIncomeValue.value = this.addIncome.join(', ');
    targetMonthValue.value = Math.ceil(this.getTargetMonth());
-   periodSelect.addEventListener('input', this.showResult);
-   
    incomePeriodValue.value = this.calcSavedMoney();
+  periodSelect.addEventListener('input', () => {
+    incomePeriodValue.value = this.calcSavedMoney();
+  });
+   
 };
 
 AppData.prototype.addExpensesBlock = function(){
