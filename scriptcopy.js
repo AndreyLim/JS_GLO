@@ -50,15 +50,14 @@ class appData {
   
       document.querySelectorAll('input[type="text"]').forEach(item => item.disabled = true);
       this.budget = +salaryAmount.value;
-
-      this.getExpenses();
       this.getIncome();
+      this.getExpenses();
       this.getExpensesMonth();
       this.getAddExpenses();
       this.getAddIncome();
       this.getInfoDeposit();
       this.getBudget();
-      this.getTargetMonth()
+      this.getTargetMonth();
       this.getPeriodAmount();
       this.calcSavedMoney();
       this.showResult();
@@ -163,8 +162,9 @@ class appData {
   }
 
   getBudget() {
-  this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
-  this.budgetDay = Math.floor(this.budgetMonth / 30);
+    const monthDeposit = this.moneyDeposit * (this.persentDeposit / 100);
+    this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + monthDeposit;
+    this.budgetDay = Math.floor(this.budgetMonth / 30);
   }
 
   getTargetMonth() {
@@ -233,27 +233,38 @@ class appData {
   getInfoDeposit() {
     if (this.deposit) {
       this.persentDeposit = depositPercent.value;
-      this.moneyDeposit = depositAmount
+      this.moneyDeposit = depositAmount;
     }
   }
+
+  // changePercent() {
+  //   const valueSelect = this.value;
+  //   if (valueSelect === 'other') {
+  //     //домашнее задание
+  //   } else {
+  //     //домашнее задание
+  //   }
+  // }
 
   depositHandler() {
     if (depositCheck.checked) {
       depositBank.style.display = 'inline-block';
       depositAmount.style.display = 'inline-block';
       this.deposit = true;
+      depositBank.addEventListener('change', this.changePercent);
     } else {
       depositBank.style.display = 'none';
       depositAmount.style.display = 'none';
       depositBank.value = '';
       depositAmount.value = '';
       this.deposit = false;
+      depositBank.removeEventListener('change', this.changePercent);
     }
   }
 
-
-
   eventsListeners() {
+    start.addEventListener('click', this.start);
+
     start.addEventListener('click', this.hiddenStart);
 
     salaryAmount.addEventListener('input', this.getSalaryMonthValue);
@@ -271,3 +282,6 @@ class appData {
     depositCheck.addEventListener('change', this.depositHandler.bind(this));
     }
 }
+
+const newData = new appData();
+newData.eventsListeners();
