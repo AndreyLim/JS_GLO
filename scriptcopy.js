@@ -263,7 +263,7 @@ class appData {
   }
 
   eventsListeners() {
-    start.addEventListener('click', this.start);
+    start.addEventListener('click', this.start.bind(this));
 
     start.addEventListener('click', this.hiddenStart);
 
@@ -275,7 +275,7 @@ class appData {
 
     periodSelect.addEventListener('input', this.getPeriodAmount);
 
-    cancel.addEventListener('click', this.reset);
+    cancel.addEventListener('click', this.reset.bind(this));
 
     cancel.addEventListener('click', this.hiddenCancel);
 
